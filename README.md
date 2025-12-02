@@ -1,116 +1,130 @@
 # Ai-Bop
+
 Bebop Drone – AI-Assisted Task Execution
 
-This repository contains an in-development framework for controlling a Parrot Bebop Drone using AI-driven autonomy. The project integrates computer vision, sensor data processing, and task-oriented decision-making to enable semi-autonomous or fully autonomous drone operations.
+This repository provides a modular and extensible framework for controlling a Parrot Bebop Drone using AI-driven autonomy. It combines reinforcement learning, computer vision, and simulation-based training to enable semi-autonomous or fully autonomous drone behavior.
 
-Note: The codebase is under active development. Interfaces, modules, and workflows may change as features mature.
+Note: The codebase is currently under active development. Interfaces, modules, and workflows may change as the system evolves.
 
-This repository contains an end-to-end reinforcement learning framework designed to train and evaluate an autonomous agent that controls a Bebop drone inside a simulated environment. The system is modular, separating environment logic, agent logic, training processes, and simulation execution.
+Overview
+
+The framework implements an end-to-end reinforcement learning system for training and evaluating an autonomous agent that controls a Bebop drone inside a simulated environment.
+It follows a clean architectural separation between:
+
+Environment (state, actions, physics, transitions)
+
+Agent (neural network, learning algorithm)
+
+Training loop (episodes, reward, learning updates)
+
+Simulation runtime (execution of trained policies)
+
+This modularity ensures clarity, maintainability, and easy extension for new tasks or algorithms.
 
 Project Structure
 environment.py      # Simulation environment (state, actions, transitions)
 training.py         # RL training loop, episodes, reward logic
 agent.py            # Neural network policy and reinforcement learning algorithm
-runSimulation.py    # Executes a simulation using a trained agent
-README.md
+runSimulation.py    # Executes the simulation using a trained agent
+README.md           # Project documentation
 
 Module Overview
 1. environment.py
 
-Defines the simulated world in which the Bebop drone operates.
+Defines the complete simulation environment in which the Bebop drone operates.
 
-Key responsibilities:
+Responsibilities:
 
-Environment initialization and scenario definition
+Initialize the environment and scenario parameters
 
-State and observation generation
+Generate observations (state representation) for the agent
 
-Handling agent actions and physics updates
+Translate agent actions into drone state updates
 
-Collision detection, boundaries, and rule enforcement
+Simulate physics, constraints, collisions, and boundaries
 
-Producing step outputs: next_state, reward, done, info
+Return next_state, reward, done, and info at every step
 
-This module serves as the foundation for both training and simulation.
+This module forms the foundation for all learning and evaluation processes.
 
 2. training.py
 
-Implements the reinforcement learning training loop.
+Implements the reinforcement learning loop that teaches the agent how to act autonomously.
 
-Key responsibilities:
+Responsibilities:
 
-Episode management and environment resets
+Manage episodes and environment resets
 
-Reward computation based on task goals
+Compute task-specific rewards
 
-Agent–environment interaction cycle
+Execute the agent–environment interaction cycle
 
-Logging training metrics
+Log performance metrics and learning progress
 
-Updating the agent’s neural network and learning policy
+Update the agent’s neural network and optimization steps
 
-Executing training.py trains the drone’s control policy using the defined environment.
+Running training.py trains the drone’s control policy using the defined environment.
 
 3. agent.py
 
-Contains the autonomous agent based on a reinforcement learning architecture.
+Encapsulates the reinforcement learning agent, including the underlying neural networks and algorithmic logic.
 
-Key responsibilities:
+Responsibilities:
 
-Neural network model for policy or value estimation
+Define the neural network architecture for the policy or value function
 
-Action selection (deterministic or exploration-based)
+Select actions (deterministic or using exploration strategies)
 
-Algorithm-specific training logic (loss, backprop, updates)
+Perform algorithm-specific learning operations (loss computation, backpropagation)
 
-Replay buffers, optimizers, target networks (depending on algorithm)
+Manage replay buffers, optimizers, and target networks (if required)
 
-Saving and loading trained models
+Save and load trained models
 
-The agent encapsulates all intelligence and decision-making logic.
+The agent implements all autonomous decision-making behavior.
 
 4. runSimulation.py
 
-Runs the simulation using a trained agent inside the environment.
+Executes a simulation using a trained model to validate or demonstrate learned behavior.
 
-Key responsibilities:
+Responsibilities:
 
-Initializing environment and agent
+Initialize both environment and trained agent
 
-Loading trained model weights
+Load saved model checkpoints
 
-Running step-by-step or real-time simulations
+Run real-time or step-wise simulations
 
-Visualizing, logging, and evaluating agent behavior
+Visualize and log agent performance and drone behavior
 
-No learning occurs here; this is purely inference mode
+Operate strictly in inference mode (no learning happens here)
 
-This script allows you to test and demonstrate the trained drone behavior.
+This script is ideal for evaluation and demonstration purposes.
 
 Workflow
 Training Workflow
 
-Initialize environment and agent
+Initialize the environment and agent
 
 Run episodes defined in training.py
 
-Agent learns from rewards and transitions
+The agent interacts with the environment and learns from rewards
 
-Model checkpoints are saved
+Model checkpoints are saved for later simulation or fine-tuning
 
 Simulation Workflow
 
-Load trained model via runSimulation.py
+Load a trained policy via runSimulation.py
 
-Agent selects actions based on learned policy
+The agent selects actions using the learned policy
 
-Environment executes actions and updates state
+The environment updates its state based on these actions
 
-Behavior can be monitored, visualized, or analyzed
+Behavior is visualized or otherwise analyzed
 
 Requirements
 
-(Adjust according to your implementation.)
+Adjust as needed based on your implementation.
 
 Python 3.9+
 
@@ -120,12 +134,23 @@ PyTorch or TensorFlow
 
 OpenCV
 
-Matplotlib (optional for debugging)
+Matplotlib (optional, for debugging or visualization)
 
-Install dependencies:
+Install all dependencies using:
 
 pip install -r requirements.txt
 
 Purpose of the Framework
 
-This system enables development and evaluation of autonomous drone behaviors using reinforcement learning. The separation of modules ensures clean architecture, flexibility for extending tasks, and the ability to swap environments, agents, or RL algorithms without rewriting the entire system.
+This system enables the development, training, and validation of autonomous drone behaviors through reinforcement learning.
+By separating environment, agent, training logic, and simulation runtime, the framework provides:
+
+Clear architecture
+
+High maintainability
+
+Simplified experimentation
+
+Easy integration of new tasks or RL algorithms
+
+It is well suited for research, prototyping, and future deployment on a real Bebop drone.
