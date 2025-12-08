@@ -1,18 +1,11 @@
 # Ai-Bop  
 Bebop-Style Quadcopter – High-Level Flight Controller (Genesis Simulation)
 
-<img src="https://img.shields.io/badge/Status-Fully Working!-brightgreen" /> <img src="https://img.shields.io/badge/Genesis-0.3.4–0.3.6-blue" /> <img src="https://img.shields.io/badge/Control-Parrot Bebop Style-success" />
+<img src="https://img.shields.io/badge/Status-Fully Working!-brightgreen" /> 
+<img src="https://img.shields.io/badge/Genesis-0.3.4–0.3.6-blue" /> 
+<img src="https://img.shields.io/badge/Control-Parrot Bebop Style-success" />
 
-@misc{Genesis,
-  author = {Genesis Authors},
-  title = {Genesis: A Generative and Universal Physics Engine for Robotics and Beyond},
-  month = {December},
-  year = {2024},
-  url = {https://github.com/Genesis-Embodied-AI/Genesis}
-}
-
-
-**A fully functional, PID-based, high-level flight controller that flies exactly like a real Parrot Bebop ** – with automatic hover, level-hold, yaw-rate control and vertical-velocity control – running in the Genesis simulator (CUDA).
+**A fully functional, PID-based, high-level flight controller that flies exactly like a real Parrot Bebop 2** – with automatic hover, level-hold, yaw-rate control and vertical-velocity control – running in the Genesis simulator (CUDA).
 
 This is the rock-solid foundation for the future **Ai-Bop** project: training autonomous policies (RL, IL, etc.) on a perfectly stable, Bebop-identical simulated drone.
 
@@ -22,7 +15,7 @@ This is the rock-solid foundation for the future **Ai-Bop** project: training au
 
 ### Features (100 % working right now)
 
-- True Parrot Bebop control scheme (no direct motor RPMs)  
+- True Parrot Bebop 2 control scheme (no direct motor RPMs)  
 - Full PID stack: Roll | Pitch | Yaw-Rate | Vertical Velocity  
 - Automatic hover & perfect level-hold when no input  
 - Smooth, realistic response (tuned for cf2x.urdf)  
@@ -75,9 +68,7 @@ Correct indentation & threading model (no more frozen viewer)
 
 
 Requirements
-
-pip install pynput numpy scipy
-
+Bashpip install pynput numpy scipy
 # Genesis 0.3.4 – 0.3.6 (older versions with DOF API)
 # Python 3.10 recommended
 
@@ -92,12 +83,16 @@ Integration with Benji project
 
 
 Author & Support
-Created by Envolate – with massive persistence and a very patient AI co-pilot.
-
+Created by you – with massive persistence and a very patient AI co-pilot.
 If you like this project and want to see it become a full autonomous Bebop AI, give a shout on
 X.com/envolate
-
 Every star, follow, and retweet helps keep the dream alive.
 
-
-Ai-Bop – the journey just began.
+References
+bibtex@misc{Genesis,
+  author       = {Genesis Authors},
+  title        = {Genesis: A Generative and Universal Physics Engine for Robotics and Beyond},
+  month        = {December},
+  year         = {2024},
+  url          = {https://github.com/Genesis-Embodied-AI/Genesis}
+}
