@@ -3,6 +3,15 @@ Bebop-Style Quadcopter – High-Level Flight Controller (Genesis Simulation)
 
 <img src="https://img.shields.io/badge/Status-Fully Working!-brightgreen" /> <img src="https://img.shields.io/badge/Genesis-0.3.4–0.3.6-blue" /> <img src="https://img.shields.io/badge/Control-Parrot Bebop Style-success" />
 
+@misc{Genesis,
+  author = {Genesis Authors},
+  title = {Genesis: A Generative and Universal Physics Engine for Robotics and Beyond},
+  month = {December},
+  year = {2024},
+  url = {https://github.com/Genesis-Embodied-AI/Genesis}
+}
+
+
 **A fully functional, PID-based, high-level flight controller that flies exactly like a real Parrot Bebop ** – with automatic hover, level-hold, yaw-rate control and vertical-velocity control – running in the Genesis simulator (CUDA).
 
 This is the rock-solid foundation for the future **Ai-Bop** project: training autonomous policies (RL, IL, etc.) on a perfectly stable, Bebop-identical simulated drone.
