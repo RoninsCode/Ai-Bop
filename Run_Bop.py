@@ -45,10 +45,10 @@ class FlightController:
         self.target_vz = 0.0
         self.target_yaw_rate = 0.0
 
-        self.pid_vx = PID(2.8, 0.00, 0.65, output_limit=35.0)
-        self.pid_vy = PID(2.8, 0.00, 0.65, output_limit=35.0)
+        self.pid_vx = PID(4.2, 0.02, 1.1, output_limit=42.0)
+        self.pid_vy = PID(4.2, 0.02, 1.1, output_limit=42.0)
         self.pid_vz = PID(1100.0, 160.0, 380.0, output_limit=6500.0)
-        self.pid_yaw = PID(4.8, 0.05, 1.2, output_limit=25.0)
+        self.pid_yaw = PID(6.5, 0.08, 1.8, output_limit=35.0)
 
         self.hover_rpm = 15200.0
 
@@ -86,8 +86,8 @@ class DroneController:
         self.fc = flight_controller
         self.running = True
         self.pressed_keys = set()
-        self.vel_accel = 5.8
-        self.yaw_rate = 3.3
+        self.vel_accel = 30
+        self.yaw_rate = 4.5
 
     def on_press(self, key):
         if key == keyboard.Key.esc:
@@ -106,7 +106,7 @@ class DroneController:
             self.fc.target_vx = max(self.fc.target_vx - self.vel_accel * dt, -5.0)
         else:
             if abs(self.fc.target_vx) > 0.08:
-                self.fc.target_vx -= np.sign(self.fc.target_vx) * self.vel_accel * dt * 2.1
+                self.fc.target_vx -= np.sign(self.fc.target_vx) * self.vel_accel * dt * 3.8
             else:
                 self.fc.target_vx = 0.0
 
@@ -117,7 +117,7 @@ class DroneController:
             self.fc.target_vy = max(self.fc.target_vy - self.vel_accel * dt, -7.5)
         else:
             if abs(self.fc.target_vy) > 0.08:
-                self.fc.target_vy -= np.sign(self.fc.target_vy) * self.vel_accel * dt * 2.1
+                self.fc.target_vy -= np.sign(self.fc.target_vy) * self.vel_accel * dt * 3.8
             else:
                 self.fc.target_vy = 0.0
 
