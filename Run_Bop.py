@@ -5,7 +5,6 @@ import genesis as gs
 from pynput import keyboard
 import numpy as np
 
-print("Starting Bebop-Style Drone Simulation – FINAL & STABIL")
 os.environ["TI_ARCH"] = "cuda"
 os.environ["TI_DEVICE_MEMORY_GB"] = "3"
 os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
@@ -138,7 +137,6 @@ def simulation_thread_func():
     listener.start()
 
     print("\n" + "="*92)
-    print("   ECHTES BEBOP / DJI MINI VERHALTEN – LÄUFT 100% STABIL!")
     print("   ↑↓←→ = Bewegung   |   W/S = Hoch/Runter   |   A/D = Drehen   |   ESC = Beenden")
     print("   Kurzer Druck → kurzer Schub → Drohne bremst & hovert automatisch!")
     print("="*92 + "\n")
@@ -164,7 +162,7 @@ def main():
     scene = gs.Scene(
         sim_options=gs.options.SimOptions(dt=0.005, gravity=(0,0,-9.81)),
         viewer_options=gs.options.ViewerOptions(
-            camera_pos=(0, -1.2, 0.9),    # Etwas weiter hinten & höher für bessere Übersicht
+            camera_pos=(0.0, -0.42, 0.32),    # Etwas weiter hinten & höher für bessere Übersicht
             camera_lookat=(0, 0, 0.6),
             max_FPS=60
         ),
